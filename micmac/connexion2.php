@@ -7,15 +7,14 @@
   <body>
   </form>
   <?php
-  echo $_POST['email'];
-  echo $_POST['passe'];
-  if(isset($_POST['email']) && isset($_POST['passe'])){
-    echo " valide";
   $link = mysqli_connect("127.0.0.1", "root", "","micmac");
-  $mail = $_POST['email'];
+  if(isset($_POST['email']) && isset($_POST['passe'])){
+
+
+  $mail = mysqli_real_escape_string($link,htmlspecialchars($_POST['email']));
   $passe = $_POST['passe'];
   $passe = sha1($passe);
-  $requete = "SELECT * FROM users  WHERE mail=".$mail;
+  $requete = "SELECT * FROM users  WHERE mail='$mail'";
   if($result = mysqli_query($link, $requete)) {
     echo "connexion et requete ok ";
     while($ligne = mysqli_fetch_assoc($result)) {
