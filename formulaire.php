@@ -12,6 +12,8 @@ $id_user = $_SESSION["id_user"];
 //Récupération données images
 include("UploadPicture.php");
 
+//RECUPERATION ADRESSE DOSSIER, TAILLE (pour avoir la résolution), EXTENSION DE L'IMAGE
+
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -39,7 +41,7 @@ if($uploadOk){
   }
 
   //Insertions des infos du chantier dans la BDD
-  $requete_chantier = "INSERT INTO chantier VALUES (NULL,".$nom_chantier.",".$datestring.",".$id_user.",".$type_cam.",".$imageResolution.",".$imageFileType.",0, 'en_attente')";
+  $requete_chantier = "INSERT INTO chantier VALUES (NULL,".$nom_chantier.",".$datestring.",".$id_user.",".$type_cam.",".$imageResolution.",".$imageFileType.", 0, 0, 'en_attente', ".$adresse_dossier.")";
   $result_chantier = mysqli_query($bdd, $requete_chantier);
   //$result_chantier = pg_query($bdd, $requete_chantier);
   if (!$result_chantier) {
@@ -51,7 +53,10 @@ if($uploadOk){
 
   //Insertions des instructions MicMac dans la BDD
   include("instructions.php");
-  setMicMacTable($id_chantier);
+  $nb_instr = setMicMacTable($id_chantier); //on récupère au passage le nombre d'instructions
+
+  //Ajout du nombre d'étapes dans la BDD (définie grâce à setMicMac)
+  $requete_update ="UPDATE chantier WHERE id = ".$id_chantier." SET nb_etapes = ".$nb_instr
 
 }
 

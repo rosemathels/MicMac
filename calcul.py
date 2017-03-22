@@ -42,10 +42,10 @@ os.system(instruction)
 #TODO : gestion des différents plantages
 
 #Quand c'est fini, incrémentation de l'avancement (rang de la commande qui vient d'être exécutée)
-cur.execute("UPDATE chantier SET avancement = (%s)", (ordre))
+cur.execute("UPDATE chantier WHERE id_chantier = (%s) SET avancement = (%s)", (id_chantier, ordre))
 
 #Passage du statut à "en attente"
-cur.execute("UPDATE chantier SET statut = 'en_attente'")
+cur.execute("UPDATE chantier WHERE id_chantier = (%s) SET statut = 'en_attente'", (id_chantier,))
 
 #Commit BDD
 conn.commit()

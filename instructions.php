@@ -18,13 +18,17 @@ function setMicMacTable($id_chantier){
     $ordre++;
   };
 
+  $nb_instr = sizeof($liste_instructions);
+
+  return $nb_instr; 
+
 }
 
 function setMicMacInstructions($param){
   //fonction qui génère la liste ordonnée des instructions MicMac à effectuer en fonction des paramètres du
 
   //Récupération des paramètres
-  $type_cam = param[0]
+  $type_cam = param[0];
   $resolution = param[1];
   $format_img = param[2];
 
