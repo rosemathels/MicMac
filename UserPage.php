@@ -18,7 +18,7 @@
           <option value="classique" selected>Caméra classique</option>
           <option value="fisheye">FishEye</option>
         </select>
-       <input type="file" name="myimage[]" id="myimage" multiple>
+       <input type="file" name="myimage" id="myimage">
        <input type="submit" name="submit_image" value="Upload"><br>
      </form>
     </div>
