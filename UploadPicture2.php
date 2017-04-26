@@ -17,17 +17,17 @@ $type_cam = mysqli_real_escape_string($conn,$_POST["type_camera"]);
 
 //Création du dossier contenant les images (nom du dossier = nom du chantier)
 $nom_chantier = $_POST["nom_chantier"];
-$target_dir = "uploads/".$nom_chantier;
+$target_dir = "uploads/".$nom_chantier."/";
 mkdir($target_dir);
 
 //Récupération du nb d'images uploadées
 $nb_images = count($_FILES["myimage"]["name"]);
 
 //Récupération des informations de l'image
-$target_file = $target_dir . basename($_FILES["myimage"][0]["name"]); //récupération du nom de la 1ère image
+$target_file = $target_dir . basename($_FILES["myimage"]["name"][0]); //récupération du nom de la 1ère image
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION); //récupération de l'extension de l'image
-$imageSize = getimagesize($_FILES["myimage"]["tmp_name"]); //récupération de la taille de l'image
+$imageSize = getimagesize($_FILES["myimage"]["tmp_name"][0]); //récupération de la taille de l'image
 //on considère que toutes les images ont le même format et la même taille
 
 $upload_failed = false;
@@ -36,12 +36,12 @@ $upload_failed = false;
 for($i = 0; $i < $nb_images; $i++){
 
   //Récupération du nom de l'images
-  $current_image = $target_dir . basename($_FILES["myimage"][i]["name"]);
+  $current_image = $target_dir . basename($_FILES["myimage"]["name"][$i]);
   $currentFileType = pathinfo($current_image,PATHINFO_EXTENSION); //récupération de l'extension de l'image
 
   // Check if image file is an actual image or fake image
   if(isset($_POST["submit"])) {
-      $check = getimagesize($_FILES["myimage"][i]["tmp_name"]);
+      $check = getimagesize($_FILES["myimage"]["tmp_name"][$i]);
       if($check !== false) {
           echo "File is an image - " . $check["mime"] . ".";
           $uploadOk = 1;
@@ -56,12 +56,12 @@ for($i = 0; $i < $nb_images; $i++){
       $uploadOk = 0;
   }
   // Check file size is bigger than 500MB
-  if ($_FILES["myimage"][i]["size"] > 500000) {
+  if ($_FILES["myimage"]["size"][$i] > 209715200) {
      echo "Sorry, your file is too large.";
      $uploadOk = 0;
   }
   // Allow certain file formats
-  if($currentFileType != "jpg" && $currentFileType != "png" && $currentFileType != "jpeg" && $currentFileType != "gif" ) {
+  if($currentFileType != "jpg" && $currentFileType != "png" && $currentFileType != "jpeg" && $currentFileType != "gif" && $currentFileType != "JPG") {
       echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
       $uploadOk = 0;
   }
@@ -69,7 +69,7 @@ for($i = 0; $i < $nb_images; $i++){
   //Si tout est ok, on ajoute l'image dans le dossier
   if($uploadOk ==1){
     //upload
-    if(move_uploaded_file($_FILES["myimage"][i]["tmp_name"], $target_file)){
+    if(move_uploaded_file($_FILES["myimage"]["tmp_name"][$i], $current_image)){
       //ajout des infos dans la BDD
       $insert_path = "INSERT INTO images(chemin,nom_image) VALUES('$target_dir','$current_image')";
       $var = mysqli_query($conn, $insert_path);

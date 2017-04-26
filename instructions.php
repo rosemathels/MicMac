@@ -59,6 +59,7 @@ function setMicMacInstructions($param){
 
   //Recherche des points de liaisons
   //Sortie => Homol => PastisImagename => fichiers binaires(.dat) contenant les points de liaison
+  $resolution /= 3;
   $Tapioca = 'mm3d Tapioca FileGPS.xml '.$resolution;
   array_push($liste_instructions, $Tapioca);
 

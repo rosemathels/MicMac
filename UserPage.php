@@ -10,7 +10,7 @@
   </head>
   <body>
     <div>
-      <form method= "post" action="UploadPicture.php" enctype="multipart/form-data">
+      <form method= "post" action="UploadPicture2.php" enctype="multipart/form-data">
         <label>Nom du chantier :</label>
         <input type="text" name="nom_chantier"><br>
         <label>Type de caméra :</label>
@@ -18,7 +18,7 @@
           <option value="classique" selected>Caméra classique</option>
           <option value="fisheye">FishEye</option>
         </select>
-       <input type="file" name="myimage" id="myimage">
+       <input type="file" name="myimage[]" id="myimage" multiple>
        <input type="submit" name="submit_image" value="Upload"><br>
      </form>
     </div>

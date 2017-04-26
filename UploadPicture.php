@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["myimage"]["name"]);
 $uploadOk = 1;
@@ -28,8 +29,8 @@ if (file_exists($target_file)) {
     echo "Sorry, file already exists.";
     $uploadOk = 0;
 }
-// Check file size is bigger than 500MB
-if ($_FILES["myimage"]["size"] > 500000) {
+// Check file size is bigger than 200MB
+if ($_FILES["myimage"]["size"] > 209715200) {
    echo "Sorry, your file is too large.";
    $uploadOk = 0;
 }
@@ -46,8 +47,8 @@ if ($uploadOk == 0) {
 else {
     if (move_uploaded_file($_FILES["myimage"]["tmp_name"], $target_file)) {
         //echo "The file ". basename( $_FILES["myimage"]["name"]). " has been uploaded.";
-        $insert_path ="INSERT INTO images(chemin,nom_image) VALUES('$target_dir','$target_file')";
-        $var=mysqli_query($conn,$insert_path);
+        $insert_path = "INSERT INTO images(chemin,nom_image) VALUES('$target_dir','$target_file')";
+        $var = mysqli_query($conn,$insert_path);
         if($imageSize[0] >= $imageSize[1]){
           $imageResolution = $imageSize[0];
         }
