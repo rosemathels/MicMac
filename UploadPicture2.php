@@ -115,14 +115,19 @@ else {
     echo "Erreur : les informations du chantier n'ont pas pu être insérées dans la base de données.";
   }
   $id_chantier = mysqli_insert_id($conn);
+
   //$id_chantier = pg_query($bdd, "SELECT CURRVAL(pg_get_serial_sequence('chantier','id_chantier'))";
 
   //Insertions des instructions MicMac dans la BDD
   include("instructions.php");
   $nb_instr = setMicMacTable($id_chantier, $conn); //on récupère au passage le nombre d'instructions
+
   //Ajout du nombre d'étapes dans la BDD (définie grâce à setMicMac)
-  $requete_update = "UPDATE chantier WHERE id = '$id_chantier' SET nb_etapes = ".$nb_instr;
+  $requete_update = "UPDATE chantiers SET nb_etapes = '$nb_instr' WHERE id_chantier = '$id_chantier'";
   $result_update = mysqli_query($conn, $requete_update);
+  if (!$result_update) {
+    echo "Erreur : les informations du chantier n'ont pas pu être insérées dans la base de données.";
+  }
 
 }
 ?>
