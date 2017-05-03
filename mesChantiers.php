@@ -3,7 +3,7 @@
 session_start();
 
 //Connexion à la BDD
-$bdd = mysqli_connect("localhost", "root", "", "micmac");
+$bdd = mysqli_connect("localhost", "root", "root", "micmac");
 if (!$bdd) {
   echo "Erreur de connexion à la BDD.";
   exit;

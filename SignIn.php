@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("127.0.0.1", "root", "","micmac");
+$link = mysqli_connect("127.0.0.1", "root", "root","micmac");
 if(isset($_POST['email']) && isset($_POST['pass'])){
   $mail = mysqli_real_escape_string($link,htmlspecialchars($_POST['email']));
   $passe = $_POST['pass'];

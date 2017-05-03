@@ -11,7 +11,6 @@ function getInfosChantier() {
       var result = JSON.parse(result_brut);
 
       var nb_chantiers = result.length;
-      console.log(nb_chantiers);
 
       //On parcourt tous les chantiers trouvés :
       for(i = 0; i < nb_chantiers; i++){

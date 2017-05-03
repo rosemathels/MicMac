@@ -2,7 +2,7 @@
 session_start();
 
 //Connexion à la BDD
-$conn = mysqli_connect("127.0.0.1", "root", "","micmac");
+$conn = mysqli_connect("127.0.0.1", "root", "root","micmac");
 //$bdd = pg_connect("host=localhost port=5432 dbname=micmac user=postgres password=postgres");
 if (!$conn) {
   header('location: UserPage.php?error=conn');
