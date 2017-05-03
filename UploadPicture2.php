@@ -129,5 +129,7 @@ else {
     echo "Erreur : les informations du chantier n'ont pas pu être insérées dans la base de données.";
   }
 
+  header('location: mesChantiers.html');
+
 }
 ?>

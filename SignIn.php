@@ -17,7 +17,7 @@ if(isset($_POST['email']) && isset($_POST['pass'])){
         $_SESSION['pseudo'] = $pseudo;
         $_SESSION['mdp'] = $mdp;
         $_SESSION['id_user'] = $id_user;
-        header('location: UserPage.php');
+        header('location: mesChantiers.html');
         //echo '<script type="text/javascript">window.location.href="/ProjetDev/UserPage/UserPage.php";</script>';
         exit();
         //die();

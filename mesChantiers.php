@@ -9,9 +9,8 @@ if (!$bdd) {
   exit;
 }
 
-//Récupération de l'ID de l'user
-//$id_user = $_SESSION["id_user"];
-$id_user = 1; //provisoire, en attendant de relier avec les autres pages ; ensuite, remettre la ligne au-dessus
+//Récupération de l'ID user
+$id_user = $_SESSION["id_user"];
 
 //Récupération des informations du chantier
 $requete = "SELECT * FROM chantiers WHERE id_user = '$id_user'";
