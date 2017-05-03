@@ -21,7 +21,7 @@
    		     <div>
        		 <ul class="nav navbar-nav navbar-right">
        				<li><a href="#" ><span class="glyphicon glyphicon-user"></span> Compte</a></li>
-       				<li><a href="\ProjetDev\SignUp_SignIn\Logout.php"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
+       				<li><a href="Logout.php"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
        		 </ul>
        		 </div>
    	    </div>
