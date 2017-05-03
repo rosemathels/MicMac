@@ -11,7 +11,6 @@ function setMicMacTable($id_chantier,$conn){
 
   foreach($liste_instructions as $instr){
     $requete_instructions = "INSERT INTO instructions VALUES (NULL,'$id_chantier','$instr','$ordre')";
-    //$result_instructions = pg_query($bdd, $requete_instructions);
     $result_instructions = mysqli_query($conn, $requete_instructions);
     if (!$result_instructions) {
       echo "Erreur : les instructions MicMac n'ont pas pu être insérées dans la base de données.";
@@ -36,7 +35,7 @@ function setMicMacInstructions($param){
     $format_img = $para["format_img"];
   }
 
-  //Détermination du modèle de distorsion en fonction du type de caméra
+  //Détermination du modèle de distorsion en fonction du type de la caméra
   if($type_cam == "classique"){
     $modele_distorsion = "RadialStd";
   }
@@ -59,7 +58,6 @@ function setMicMacInstructions($param){
 
   //Recherche des points de liaisons
   //Sortie => Homol => PastisImagename => fichiers binaires(.dat) contenant les points de liaison
-  $resolution /= 3;
   $Tapioca = 'mm3d Tapioca FileGPS.xml '.$resolution;
   array_push($liste_instructions, $Tapioca);
 

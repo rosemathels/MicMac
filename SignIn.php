@@ -17,19 +17,18 @@ if(isset($_POST['email']) && isset($_POST['pass'])){
         $_SESSION['pseudo'] = $pseudo;
         $_SESSION['mdp'] = $mdp;
         $_SESSION['id_user'] = $id_user;
-        header('location: UserPage.php');
-        //echo '<script type="text/javascript">window.location.href="/ProjetDev/UserPage/UserPage.php";</script>';
+        header('location: /ProjetDev/UserPage/UserPage.php');
         exit();
-        //die();
       }
       else {
-        echo "Wrong credentials!";
+        echo "Veuillez vérifier le mail ou le mot de passe que vous avez rentré!";
       }
     }
+
   }
 }
 else{
-  echo "Failed to log in!";
+  echo "Echec de l'authentification!";
 }
 
 mysqli_close($link);

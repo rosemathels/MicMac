@@ -1,17 +1,14 @@
 <?php
 session_start();
 
-//Connexion à la BDD
 $conn = mysqli_connect("127.0.0.1", "root", "","micmac");
-//$bdd = pg_connect("host=localhost port=5432 dbname=micmac user=postgres password=postgres");
+
 if (!$conn) {
-  header('location: UserPage.php?error=conn');
+  echo "Erreur de connexion à la BDD.";
   exit;
 }
 
 //Récupération des données du formulaire
-//$nom_chantier = pg_escape_string($_POST["nom_chantier"]);
-//$type_cam = pg_escape_string($_POST["type_camera"]);
 $nom_chantier = mysqli_real_escape_string($conn,$_POST["nom_chantier"]);
 $type_cam = mysqli_real_escape_string($conn,$_POST["type_camera"]);
 
@@ -35,35 +32,35 @@ $upload_failed = false;
 //Parcours des images
 for($i = 0; $i < $nb_images; $i++){
 
-  //Récupération du nom de l'images
+  //Récupération du nom des images
   $current_image = $target_dir . basename($_FILES["myimage"]["name"][$i]);
   $currentFileType = pathinfo($current_image,PATHINFO_EXTENSION); //récupération de l'extension de l'image
 
-  // Check if image file is an actual image or fake image
+  // Vérifier que les fichiers sont bien des images
   if(isset($_POST["submit"])) {
       $check = getimagesize($_FILES["myimage"]["tmp_name"][$i]);
       if($check !== false) {
           echo "File is an image - " . $check["mime"] . ".";
           $uploadOk = 1;
       } else {
-          header('location: UserPage.php?error=notimage');
+          echo "File is not an image.";
           $uploadOk = 0;
       }
   }
-  // Check if file already exists
+  
+  // Vérifier si les images existent déjà
   if (file_exists($current_image)) {
-      header('location: UserPage.php?error=double');
+      echo "Sorry, file already exists.";
       $uploadOk = 0;
   }
-  // Check file size is bigger than 500MB
+  // Vérifier la taille des images
   if ($_FILES["myimage"]["size"][$i] > 209715200) {
-     header('location: UserPage.php?error=size');
+     echo "Sorry, your file is too large.";
      $uploadOk = 0;
   }
-  // Allow certain file formats
+  // Autoriser certaines formats des images
   if($currentFileType != "jpg" && $currentFileType != "png" && $currentFileType != "jpeg" && $currentFileType != "gif" && $currentFileType != "JPG") {
       echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-      header('location: UserPage.php?error=type');
       $uploadOk = 0;
   }
 
@@ -77,7 +74,6 @@ for($i = 0; $i < $nb_images; $i++){
     }
     else{
       $upload_failed = true; //cas où l'upload a échoué
-      header('location: UserPage.php?error=upload');
     }
   }
   else{
@@ -88,7 +84,7 @@ for($i = 0; $i < $nb_images; $i++){
 
 //SI L'UPLOAD S'EST BIEN PASSE, ON REMPLIT LA BDD
 
-// Check if $uploadOk is set to 0 by an error
+// Vérifier si l'upload a été bien fait
 if ($upload_failed) {
     echo "Votre chantier n'est pas valide, veuillez recommencer";
 }
@@ -108,18 +104,14 @@ else {
   $datestring = $date["mday"]."/".$date["mon"]."/".$date["year"];
   $id_user = $_SESSION['id_user'];
 
-  //Insertions des infos du chantier dans la BDD
+  //Insertion des infos du chantier dans la BDD
   $requete_chantier = "INSERT INTO chantiers VALUES (NULL,'$nom_chantier','$datestring','$id_user','$type_cam','$imageResolution','$imageFileType', 0, 0, 'en_attente', '$target_dir')";
   $result_chantier = mysqli_query($conn, $requete_chantier);
 
-  //$result_chantier = pg_query($bdd, $requete_chantier);
   if (!$result_chantier) {
-    header('location: UserPage.php?error=insert');
     echo "Erreur : les informations du chantier n'ont pas pu être insérées dans la base de données.";
   }
   $id_chantier = mysqli_insert_id($conn);
-
-  //$id_chantier = pg_query($bdd, "SELECT CURRVAL(pg_get_serial_sequence('chantier','id_chantier'))";
 
   //Insertions des instructions MicMac dans la BDD
   include("instructions.php");
@@ -129,10 +121,8 @@ else {
   $requete_update = "UPDATE chantiers SET nb_etapes = '$nb_instr' WHERE id_chantier = '$id_chantier'";
   $result_update = mysqli_query($conn, $requete_update);
   if (!$result_update) {
-    header('location: UserPage.php?error=insert');
+    echo "Erreur : les informations du chantier n'ont pas pu être insérées dans la base de données.";
   }
-
-  header('location: UserPage.php?error=none');
 
 }
 ?>
