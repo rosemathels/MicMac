@@ -1,0 +1,8 @@
+<config>
+   <paths>
+        <project_path>/home/GPSTOOLS/pyonline/</project_path>
+        <receiver_path>/home/DEPOT_CALCUL</receiver_path>
+        <observation_path>/home/DEPOT_OBS</observation_path>
+        <exe_conf_path>/home/GPSTOOLS/pyonline/exe/</exe_conf_path>
+    </paths>
+</config>
