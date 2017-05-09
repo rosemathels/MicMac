@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("127.0.0.1", "root", "root","micmac");
+$link = mysqli_connect("127.0.0.1", "root", "","micmac");
 if(isset($_POST['email']) && isset($_POST['pass'])){
   $mail = mysqli_real_escape_string($link,htmlspecialchars($_POST['email']));
   $passe = $_POST['pass'];
@@ -17,7 +17,7 @@ if(isset($_POST['email']) && isset($_POST['pass'])){
         $_SESSION['pseudo'] = $pseudo;
         $_SESSION['mdp'] = $mdp;
         $_SESSION['id_user'] = $id_user;
-        header('location: UserPage.php');
+        header('location: CreerChantier.php');
         exit();
       }
       else {
@@ -33,3 +33,4 @@ else{
 
 mysqli_close($link);
 ?>
+>>>>>>> 6208b7c1457f41ec6232ef162ce7d950eaaf1e97

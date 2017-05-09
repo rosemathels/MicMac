@@ -29,7 +29,7 @@
 
       <div class="container">
         <h2>Créer chantier</h2>
-          <form class="form-horizontal" method= "post" action="UploadPicture2.php" enctype="multipart/form-data">
+          <form class="form-horizontal" method= "post" action="UploadPictures.php" enctype="multipart/form-data">
             <div class="form-group">
               <label class="control-label col-sm-2">Nom du chantier :</label>
               <div class="col-sm-10">

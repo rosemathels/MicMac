@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("127.0.0.1", "root", "root","micmac");
+$link = mysqli_connect("127.0.0.1", "root", "","micmac");
 if (!$link){
   echo "<script type='text/javascript'>alert('Echec de la connexion à la base de données');</script>";
 }
