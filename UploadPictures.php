@@ -4,7 +4,7 @@ session_start();
 $conn = mysqli_connect("127.0.0.1", "root", "","micmac");
 
 if (!$conn) {
-  echo "Erreur de connexion à la BDD.";
+  header('location: CreerChantier.php?error=conn');
   exit;
 }
 
@@ -43,24 +43,24 @@ for($i = 0; $i < $nb_images; $i++){
           echo "File is an image - " . $check["mime"] . ".";
           $uploadOk = 1;
       } else {
-          echo "File is not an image.";
+          header('location: CreerChantier.php?error=notimage');
           $uploadOk = 0;
       }
   }
 
   // Vérifier si les images existent déjà
   if (file_exists($current_image)) {
-      echo "Sorry, file already exists.";
+      header('location: CreerChantier.php?error=double');
       $uploadOk = 0;
   }
   // Vérifier la taille des images
   if ($_FILES["myimage"]["size"][$i] > 209715200) {
-     echo "Sorry, your file is too large.";
+     header('location: CreerChantier.php?error=size');
      $uploadOk = 0;
   }
   // Autoriser certaines formats des images
   if($currentFileType != "jpg" && $currentFileType != "png" && $currentFileType != "jpeg" && $currentFileType != "gif" && $currentFileType != "JPG") {
-      echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      header('location: CreerChantier.php?error=type');
       $uploadOk = 0;
   }
 
@@ -74,6 +74,7 @@ for($i = 0; $i < $nb_images; $i++){
     }
     else{
       $upload_failed = true; //cas où l'upload a échoué
+	  header('location: CreerChantier.php?error=upload');
     }
   }
   else{
@@ -109,7 +110,7 @@ else {
   $result_chantier = mysqli_query($conn, $requete_chantier);
 
   if (!$result_chantier) {
-    echo "Erreur : les informations du chantier n'ont pas pu être insérées dans la base de données.";
+    header('location: UserPage.php?error=insert');
   }
   $id_chantier = mysqli_insert_id($conn);
 
@@ -121,8 +122,8 @@ else {
   $requete_update = "UPDATE chantiers SET nb_etapes = '$nb_instr' WHERE id_chantier = '$id_chantier'";
   $result_update = mysqli_query($conn, $requete_update);
   if (!$result_update) {
-    echo "Erreur : les informations du chantier n'ont pas pu être insérées dans la base de données.";
+    header('location: UserPage.php?error=insert');
   }
-
+header('location: UserPage.php?error=none');
 }
 ?>
