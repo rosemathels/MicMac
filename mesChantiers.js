@@ -36,6 +36,7 @@ function getInfosChantier() {
 
         var p_chantier = document.createElement("p");
 
+        //On indique le nom, les paramètres et l'avancement de chaque chantier
         var texte_nom = "Nom du chantier : "+nom_chantier;
         var texte_type = "Type de caméra : "+type_cam;
         var texte_resolution = "Résolution : "+resolution;
@@ -51,7 +52,16 @@ function getInfosChantier() {
         p_chantier.appendChild(textnode_resolution);
         p_chantier.appendChild(textnode_avancement);
 
-        //Si le chantier est terminé, on propose le lien de téléchargement
+        //Si le chantier est terminé, on ajoute le lien de téléchargement vers les sorties MicMac
+        if(statut == "termine"){
+          var l_chantier = document.createElement("a");
+          var texte_lien = "uploads/"+nom_chantier+"/IMG_0078.jpg"
+          l_chantier.setAttribute("href", texte_lien);
+          l_chantier.setAttribute("download", "mon_image.jpg");
+          l_chantier.innerHTML = "Télécharger";
+
+          p_chantier.appendChild(l_chantier);
+        }
 
         div_statut.appendChild(p_chantier);
 
