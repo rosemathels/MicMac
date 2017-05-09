@@ -17,7 +17,7 @@ if(isset($_POST['email']) && isset($_POST['pass'])){
         $_SESSION['pseudo'] = $pseudo;
         $_SESSION['mdp'] = $mdp;
         $_SESSION['id_user'] = $id_user;
-        header('location: CreerChantier.php');
+        header('location: UserPage.php');
         exit();
       }
       else {

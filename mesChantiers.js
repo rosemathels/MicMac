@@ -34,23 +34,32 @@ function getInfosChantier() {
           var div_statut = document.getElementById("en_cours");
         }
 
-        var p_chantier = document.createElement("p");
-
         //On indique le nom, les paramètres et l'avancement de chaque chantier
-        var texte_nom = "Nom du chantier : "+nom_chantier;
-        var texte_type = "Type de caméra : "+type_cam;
-        var texte_resolution = "Résolution : "+resolution;
-        var texte_avancement = "Avancement : "+avancement_rel+"%";
+        var texte_nom = nom_chantier;
+        var texte_type = type_cam;
+        var texte_resolution = resolution;
+        var texte_avancement = avancement_rel+"%";
 
         var textnode_nom = document.createTextNode(texte_nom);
         var textnode_type = document.createTextNode(texte_type);
         var textnode_resolution = document.createTextNode(texte_resolution);
         var textnode_avancement = document.createTextNode(texte_avancement);
 
-        p_chantier.appendChild(textnode_nom);
-        p_chantier.appendChild(textnode_type);
-        p_chantier.appendChild(textnode_resolution);
-        p_chantier.appendChild(textnode_avancement);
+        // ajout d'une ligne à la fin de la table
+        var newRow   = div_statut.getElementsByTagName('tbody')[0].insertRow();
+
+        // insertion des cellules
+        var newCell1  = newRow.insertCell();
+        var newCell2  = newRow.insertCell();
+        var newCell3  = newRow.insertCell();
+        var newCell4  = newRow.insertCell();
+        var newCell5  = newRow.insertCell();
+
+        newCell1.appendChild(textnode_nom);
+        newCell2.appendChild(textnode_type);
+        newCell3.appendChild(textnode_resolution);
+        newCell4.appendChild(textnode_avancement);
+
 
         //Si le chantier est terminé, on ajoute le lien de téléchargement vers les sorties MicMac
         if(statut == "termine"){
@@ -60,10 +69,10 @@ function getInfosChantier() {
           l_chantier.setAttribute("download", "mon_image.jpg");
           l_chantier.innerHTML = "Télécharger";
 
-          p_chantier.appendChild(l_chantier);
+          //p_chantier.appendChild(l_chantier);
         }
 
-        div_statut.appendChild(p_chantier);
+        //div_statut.appendChild(p_chantier);
 
       };
 

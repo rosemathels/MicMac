@@ -5,19 +5,22 @@ body,h3,label {
 body, html {
   height: 100%
 }
+.button{
+  margin-left: 100px;
+}
 .bouton:hover{
     background-color: grey;
 }
+
 .bouton{
     background-color: #4682B4;
     color: white;
     border: none;
     border-radius: 5px;
     padding: 12px 30px;
-    margin: 8px 0;
+    /*margin-left: 100px;*/
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 12px;
     font-family: "Raleway";
     cursor: pointer;
