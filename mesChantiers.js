@@ -22,6 +22,8 @@ function getInfosChantier() {
         var avancement = result[i]["avancement"];
         var nb_etapes = result[i]["nb_etapes"];
         var statut = result[i]["statut"];
+        var nom_complet = result[i]["nom_complet"];
+        var reso_sortie = result[i]["sortie"];
         var avancement_rel = (Number(avancement)/Number(nb_etapes))*100;
 
         //Affichage dans le DOM
@@ -29,55 +31,88 @@ function getInfosChantier() {
         //On regarde si le chantier est en cours ou terminé pour choisir où on affiche les infos
         if(statut == "termine"){
           var div_statut = document.getElementById("termine");
+
+          //On indique le nom, les paramètres et l'avancement de chaque chantier
+          var texte_nom = nom_chantier;
+          var texte_type = type_cam;
+          var texte_resolution = resolution;
+          var texte_avancement = avancement;
+
+          var textnode_nom = document.createTextNode(texte_nom);
+          var textnode_type = document.createTextNode(texte_type);
+          var textnode_resolution = document.createTextNode(texte_resolution);
+          var textnode_avancement = document.createTextNode(avancement_rel+"%");
+
+          // ajout d'une ligne à la fin de la table
+          var newRow   = div_statut.getElementsByTagName('tbody')[0].insertRow();
+
+          // insertion des cellules
+          var newCell1  = newRow.insertCell();
+          var newCell2  = newRow.insertCell();
+          var newCell3  = newRow.insertCell();
+          var newCell4  = newRow.insertCell();
+          var newCell5  = newRow.insertCell();
+
+          newCell1.appendChild(textnode_nom);
+          newCell2.appendChild(textnode_type);
+          newCell3.appendChild(textnode_resolution);
+          newCell4.appendChild(textnode_avancement);
+
+          var lien_all = document.createElement("a");
+          var texte_lien_all = "uploads/"+nom_complet+".zip";
+          lien_all.setAttribute("href", texte_lien_all);
+          lien_all.setAttribute("download", nom_complet+".zip");
+          lien_all.innerHTML = "Télécharger le dossier complet";
+          newCell5.appendChild(lien_all);
+
+          /*var lien_nuage = document.createElement("a");
+          var option;
+          if(reso_sortie == "haute"){
+            option = "BigMac";
+          }
+          else if(reso_sortie == "moyenne"){
+            $option = "MicMac";
+          }
+          else if(reso_sortie == "faible"){
+            $option = "QuickMac";
+          }
+          var texte_lien_nuage = "uploads/"+nom_complet+"C3DC_"+option+".ply";
+          lien_nuage.setAttribute("href", texte_lien_nuage);
+          lien_nuage.setAttribute("download", nom_complet+"C3DC_"+option+".ply");
+          lien_nuage.innerHTML = "Télécharger le nuage de points";
+          newCell5.appendChild(lien_nuage);*/
+
         }
         else{
           var div_statut = document.getElementById("en_cours");
+
+          //On indique le nom, les paramètres et l'avancement de chaque chantier
+          var texte_nom = nom_chantier;
+          var texte_type = type_cam;
+          var texte_resolution = resolution;
+          var texte_avancement = avancement_rel+"%";
+
+          var textnode_nom = document.createTextNode(texte_nom);
+          var textnode_type = document.createTextNode(texte_type);
+          var textnode_resolution = document.createTextNode(texte_resolution);
+          var textnode_avancement = document.createTextNode(texte_avancement);
+
+          // ajout d'une ligne à la fin de la table
+          var newRow   = div_statut.getElementsByTagName('tbody')[0].insertRow();
+
+          // insertion des cellules
+          var newCell1  = newRow.insertCell();
+          var newCell2  = newRow.insertCell();
+          var newCell3  = newRow.insertCell();
+          var newCell4  = newRow.insertCell();
+
+          newCell1.appendChild(textnode_nom);
+          newCell2.appendChild(textnode_type);
+          newCell3.appendChild(textnode_resolution);
+          newCell4.appendChild(textnode_avancement);
         }
-
-        //On indique le nom, les paramètres et l'avancement de chaque chantier
-        var texte_nom = nom_chantier;
-        var texte_type = type_cam;
-        var texte_resolution = resolution;
-        var texte_avancement = avancement_rel+"%";
-
-        var textnode_nom = document.createTextNode(texte_nom);
-        var textnode_type = document.createTextNode(texte_type);
-        var textnode_resolution = document.createTextNode(texte_resolution);
-        var textnode_avancement = document.createTextNode(texte_avancement);
-
-        // ajout d'une ligne à la fin de la table
-        var newRow   = div_statut.getElementsByTagName('tbody')[0].insertRow();
-
-        // insertion des cellules
-        var newCell1  = newRow.insertCell();
-        var newCell2  = newRow.insertCell();
-        var newCell3  = newRow.insertCell();
-        var newCell4  = newRow.insertCell();
-        var newCell5  = newRow.insertCell();
-
-        newCell1.appendChild(textnode_nom);
-        newCell2.appendChild(textnode_type);
-        newCell3.appendChild(textnode_resolution);
-        newCell4.appendChild(textnode_avancement);
-
-
-        //Si le chantier est terminé, on ajoute le lien de téléchargement vers les sorties MicMac
-        if(statut == "termine"){
-          var l_chantier = document.createElement("a");
-          var texte_lien = "uploads/"+nom_chantier+"/IMG_0078.jpg"
-          l_chantier.setAttribute("href", texte_lien);
-          l_chantier.setAttribute("download", "mon_image.jpg");
-          l_chantier.innerHTML = "Télécharger";
-
-          //p_chantier.appendChild(l_chantier);
-        }
-
-        //div_statut.appendChild(p_chantier);
-
       };
-
-      }
-
+    }
 	}
 	ajax.open("GET", url, true);
 	ajax.send();

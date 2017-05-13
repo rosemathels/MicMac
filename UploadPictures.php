@@ -11,12 +11,17 @@ if (!$conn) {
 //Récupération des données du formulaire
 $nom_chantier = mysqli_real_escape_string($conn,$_POST["nom_chantier"]);
 $type_cam = mysqli_real_escape_string($conn,$_POST["type_camera"]);
+$reso_sortie = mysqli_real_escape_string($conn,$_POST["resolution"]);
+
+//Récupération de la date et de l'heure (pour l'unicité du nom du dossier)
+$date = getdate();
+$date_dossier = $date["mday"].$date["mon"].$date["year"].$date["hours"].$date["minutes"].$date["seconds"];
 
 //Création du dossier contenant les images (nom du dossier = nom du chantier)
-$nom_chantier = $_POST["nom_chantier"];
-$target_dir = "uploads/".$nom_chantier."/";
-mkdir($target_dir);
-
+$full_name = $nom_chantier.$date_dossier;
+$target_dir = "uploads/".$full_name."/";
+mkdir($target_dir, 0777);
+chmod($target_dir, 0777);
 //Récupération du nb d'images uploadées
 $nb_images = count($_FILES["myimage"]["name"]);
 
@@ -101,12 +106,11 @@ else {
   }
 
   //Récupération données de session
-  $date = getdate();
-  $datestring = $date["mday"]."/".$date["mon"]."/".$date["year"];
   $id_user = $_SESSION['id_user'];
+  $datestring = $date["mday"]."/".$date["mon"]."/".$date["year"];
 
   //Insertion des infos du chantier dans la BDD
-  $requete_chantier = "INSERT INTO chantiers VALUES (NULL,'$nom_chantier','$datestring','$id_user','$type_cam','$imageResolution','$imageFileType', 0, 0, 'en_attente', '$target_dir')";
+  $requete_chantier = "INSERT INTO chantiers VALUES (NULL,'$nom_chantier','$datestring','$id_user','$type_cam','$imageResolution','$imageFileType', 0, 0, 'en_attente', '$target_dir','$reso_sortie','$full_name')";
   $result_chantier = mysqli_query($conn, $requete_chantier);
 
   if (!$result_chantier) {

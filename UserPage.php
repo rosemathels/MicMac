@@ -49,6 +49,7 @@
               <th>camera</th>
               <th>résolution</th>
               <th>avancement</th>
+              <th>lien</th>
             </tr>
           </thead>
           <tbody>

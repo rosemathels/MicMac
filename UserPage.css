@@ -1,24 +1,19 @@
 body,h3,label {
   font-family: "Raleway", sans-serif;
 }
-
 body, html {
   height: 100%
-}
-.button{
-  margin-left: 100px;
 }
 .bouton:hover{
     background-color: grey;
 }
-
 .bouton{
     background-color: #4682B4;
     color: white;
     border: none;
     border-radius: 5px;
     padding: 12px 30px;
-    /*margin-left: 100px;*/
+    margin-left: 110px;
     text-align: center;
     text-decoration: none;
     font-size: 12px;

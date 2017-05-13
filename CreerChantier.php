@@ -46,12 +46,12 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2">Résolution :</label>
+              <label class="control-label col-sm-2">Résolution souhaitée en sortie :</label>
               <div class="col-sm-10">
                 <select class="form-control" id="resolution" name="resolution">
-                  <option value="haute" >Haute résolution</option>
-                  <option value="moyenne" selected>Résolution moyenne</option>
-                  <option value="faible">Faible résolution</option>
+                  <option value="haute" >Haute résolution - BigMac</option>
+                  <option value="moyenne" selected>Résolution moyenne - MicMac</option>
+                  <option value="faible">Faible résolution - QuickMac</option>
                 </select>
               </div>
             </div>
