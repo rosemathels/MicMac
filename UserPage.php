@@ -12,20 +12,25 @@
   </head>
   <body>
 
-   <div class="menu">
-    <div class="container-fluid">
-        <div>
-        <ul class="nav navbar-nav navbar-right">
-           <li><a href="#" ><span class="glyphicon glyphicon-user"></span> Compte</a></li>
-           <li><a href="Logout.php"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
-        </ul>
-        </div>
-     </div>
-   </div>
+    <div class="menu">
+     <div class="container-fluid">
+         <div>
+         <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" ><span class="glyphicon glyphicon-user"></span> Compte</a>
+                <ul class="dropdown">
+                    <li><a href="MonCompte.php">Supprimer compte</a></li>
+                    <li><a href="ChangerMdp.php">Changer mot de passe</a></li>
+                </ul>
+            </li>
+            <li><a href="Logout.php"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
+         </ul>
+         </div>
+      </div>
+    </div>
 
     <div class="container">
       <div class="table-responsive">
-        <h3>Chantiers en cours</h3>
+        <h2>Chantiers en cours</h2>
         <table class="table" id="en_cours">
           <thead>
             <tr>
@@ -40,7 +45,7 @@
         </table>
       </div>
 
-      <h3>Chantiers terminés</h3>
+      <h2>Chantiers terminés</h2>
       <div class="table-responsive">
         <table class="table" id="termine">
           <thead>
@@ -56,10 +61,8 @@
           </tbody>
         </table>
       </div>
+      <input class="bouton" type="button" value="Créer un nouveau chantier" OnClick="javascript:location.href='CreerChantier.php'"/>
     </div>
-
-    <input class="bouton" type="button" value="Créer un nouveau chantier" OnClick="javascript:location.href='CreerChantier.php'"/>
-
   </body>
 </html>
 <!-- <?php

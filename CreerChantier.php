@@ -5,7 +5,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>User Page</title>
+    <title>Créer Chantier</title>
 
     <link rel="stylesheet" href="CreerChantier.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -20,7 +20,12 @@
        <div class="container-fluid">
    		     <div>
        		 <ul class="nav navbar-nav navbar-right">
-       				<li><a href="#" ><span class="glyphicon glyphicon-user"></span> Compte</a></li>
+       				<li><a href="#" ><span class="glyphicon glyphicon-user"></span> Compte</a>
+                  <ul class="dropdown">
+                      <li><a href="MonCompte.php">Supprimer compte</a></li>
+                      <li><a href="ChangerMdp.php">Changer mot de passe</a></li>
+                  </ul>
+              </li>
        				<li><a href="Logout.php"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
        		 </ul>
        		 </div>
@@ -62,7 +67,7 @@
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-default" name="submit_image" value="Upload">Submit</button>
+              <button type="submit" class="bouton" name="submit_image" value="Upload">Valider chantier</button>
             </div>
           </div>
          </form>

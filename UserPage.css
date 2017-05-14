@@ -1,8 +1,5 @@
-body,h3,label {
+body,h3,label,a {
   font-family: "Raleway", sans-serif;
-}
-body, html {
-  height: 100%
 }
 .bouton:hover{
     background-color: grey;
@@ -13,7 +10,6 @@ body, html {
     border: none;
     border-radius: 5px;
     padding: 12px 30px;
-    margin-left: 110px;
     text-align: center;
     text-decoration: none;
     font-size: 12px;
@@ -26,7 +22,7 @@ background-color: #00547E;
 border-bottom: 4px solid #04A3ED;
 width:100%;
 height: auto;
-padding: 0 10px;
+padding: 0 0px;
 margin: 0px;
 z-index: 1;
 opacity: 0.9;
@@ -42,9 +38,44 @@ font-weight: bold;
 {
 font-size: 13px;
 color: white;
-padding: 10px 35px;
+padding: 10px 70px;
 }
 .menu  .navbar-nav >  li >  a:hover
 {
 background-color: #04A3ED;
+}
+ul{
+    padding: 0;
+    list-style: none;
+    background: #00547E;
+}
+ul li{
+    display: inline-block;
+    position: relative;
+    line-height: 21px;
+    text-align: left;
+}
+ul li a{
+    display: block;
+    padding: 8px 25px;
+    color: #fff;
+    text-decoration: none;
+}
+ul li a:hover{
+    color: #fff;
+    background: #04A3ED;
+}
+ul li ul.dropdown{
+    min-width: 100%; /* Set width of the dropdown */
+    background: #00547E;
+    display: none;
+    position: absolute;
+    z-index: 999;
+    left: 0;
+}
+ul li:hover ul.dropdown{
+    display: block;	/* Display the dropdown */
+}
+ul li ul.dropdown li{
+    display: block;
 }

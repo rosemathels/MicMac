@@ -33,4 +33,3 @@ else{
 
 mysqli_close($link);
 ?>
->>>>>>> 6208b7c1457f41ec6232ef162ce7d950eaaf1e97
