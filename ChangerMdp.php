@@ -22,7 +22,7 @@ session_start();
          </div>
       </div>
     </div>
-    <div class="container">
+    <div id="ChangePass" class="container">
       <h2>Changer mot de passe</h2>
         <form class="form-horizontal" method= "post" action="ChangerMdpBD.php" enctype="multipart/form-data">
           <div class="form-group">
@@ -43,6 +43,7 @@ session_start();
               <input type="password" class="form-control" name="new_pass2">
             </div>
           </div>
+          <div class="col-sm-offset-2 col-sm-10" id="error"></div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <input class="bouton" type="submit" value="Valider"/>
@@ -50,5 +51,6 @@ session_start();
           </div>
        </form>
     </div>
+    <script type="text/javascript" src="ChangerMdp.js"></script>
   </body>
 </html>

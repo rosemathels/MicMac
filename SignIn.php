@@ -1,5 +1,10 @@
 <?php
 $link = mysqli_connect("127.0.0.1", "root", "","micmac");
+
+if(!$link){
+  echo "FAILED";
+}
+
 if(isset($_POST['email']) && isset($_POST['pass'])){
   $mail = mysqli_real_escape_string($link,htmlspecialchars($_POST['email']));
   $passe = $_POST['pass'];
@@ -17,18 +22,19 @@ if(isset($_POST['email']) && isset($_POST['pass'])){
         $_SESSION['pseudo'] = $pseudo;
         $_SESSION['mdp'] = $mdp;
         $_SESSION['id_user'] = $id_user;
-        header('location: UserPage.php');
-        exit();
+        echo "SUCCESS";
+        // header('location: UserPage.php');
+        // exit();
       }
       else {
-        echo "Veuillez vérifier le mail ou le mot de passe que vous avez rentré!";
+        echo "ERROR";
       }
     }
 
   }
 }
 else{
-  echo "Echec de l'authentification!";
+  echo "FAILED";
 }
 
 mysqli_close($link);

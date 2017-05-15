@@ -1,5 +1,4 @@
 window.onload = function(){
-
 function getInfosCompte(){
 
   var ajax = new XMLHttpRequest();

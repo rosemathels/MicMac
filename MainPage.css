@@ -52,13 +52,21 @@ input[type=submit] {
 }
 #SignIn{
   width: 40%;
-  margin-top: 20px;
-  margin-left: 20px;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+.form1{
+  float: left;
+  margin-left: 75px;
 }
 #SignUp{
   width: 40%;
-  margin-top: 20px;
-  margin-left: 20px;
+  margin-top: 30px;
+  margin-left: 60px;
+}
+.form2{
+  float: right;
+  margin-right: 120px;
 }
 .bgimg {
     background-image: url('forestbridge.jpg');

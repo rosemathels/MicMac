@@ -1,7 +1,7 @@
 <?php
 $link = mysqli_connect("127.0.0.1", "root", "","micmac");
 if (!$link){
-  echo "<script type='text/javascript'>alert('Echec de la connexion à la base de données');</script>";
+  echo "FAILED";
 }
 
 if(isset($_POST['passe']) && isset($_POST['passe2']) && isset($_POST['pseudo']) && isset($_POST['email'])){
@@ -18,8 +18,9 @@ if(isset($_POST['passe']) && isset($_POST['passe2']) && isset($_POST['pseudo']) 
 
   else
   {
-    echo "<script type='text/javascript'>alert('Les deux mots de passe que vous avez rentrés ne correspondent pas!');</script>";
+    echo "ERROR";
   }
 }
+
 mysqli_close($link);
 ?>

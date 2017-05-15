@@ -26,19 +26,19 @@ if(isset($_POST['old_pass']) && isset($_POST['new_pass']) && isset($_POST['new_p
               $passe = sha1($passe);
               $requete = "UPDATE users SET mdp = '$passe' WHERE id_user = '$id_user'";
               if(mysqli_query($link, $requete)) {
-                  echo "ok";
+                  echo "SUCCESS";
               }
               else {
-                  echo "erreur bd";
+                  echo "FAILED";
               }
             }
            else{
-              echo "vérifiez le nouveau mot de passe!";
+              echo "ERROR1";
             }
           }
 
        else{
-          echo "Vérifiez l'ancien mot de passe!";
+          echo "ERROR2";
         }
     }
   }
