@@ -6,7 +6,7 @@ $id_user = $_SESSION["id_user"];
 $link = mysqli_connect("localhost", "root", "","micmac");
 
 if(!$link){
-  die("Impossible de se connecter à la base de données");
+  echo "FAILED";
 }
 
 if(isset($_POST['old_pass']) && isset($_POST['new_pass']) && isset($_POST['new_pass2'])){

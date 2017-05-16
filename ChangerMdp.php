@@ -17,7 +17,7 @@ session_start();
      <div class="container-fluid">
          <div>
          <ul class="nav navbar-nav navbar-right">
-            <li><a href="MainPage.html"><span class="glyphicon glyphicon-log-in"></span> Acceuil</a></li>
+            <li><a href="MainPage.html"><span class="glyphicon glyphicon-log-in"></span> Accueil</a></li>
          </ul>
          </div>
       </div>

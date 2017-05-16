@@ -22,7 +22,7 @@
        		 <ul class="nav navbar-nav navbar-right">
        				<li><a href="#" ><span class="glyphicon glyphicon-user"></span> Compte</a>
                   <ul class="dropdown">
-                      <li><a href="MonCompte.php">Supprimer compte</a></li>
+                      <li><a id="delete" href="supprCompte.php">Supprimer compte</a></li>
                       <li><a href="ChangerMdp.php">Changer mot de passe</a></li>
                   </ul>
               </li>
@@ -72,6 +72,6 @@
           </div>
          </form>
       </div>
-
+    <script src = "supprCompte.js"></script>
   </body>
 </html>

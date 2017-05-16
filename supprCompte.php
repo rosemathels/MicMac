@@ -5,7 +5,7 @@ session_start();
 //Connexion à la BDD
 $bdd = mysqli_connect("localhost", "root", "", "micmac");
 if (!$bdd) {
-  echo "Erreur de connexion à la BDD.";
+  echo "ERROR";
   exit;
 }
 
@@ -16,10 +16,13 @@ $id_user = $_SESSION["id_user"];
 $requete_delete = "DELETE FROM users WHERE id_user = '$id_user'";
 $result_delete = mysqli_query($bdd, $requete_delete);
 if (!$result_delete){
-  header('location: MonCompte.php?error=delete');
+  echo "ERROR";
 }
 else{
-  header('location: deleteOk.html');
+  echo "SUCCESS";
 }
 
- ?>
+session_destroy();
+$_SESSION = array();
+
+?>
