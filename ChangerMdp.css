@@ -1,0 +1,47 @@
+body,h2,label,a {
+  font-family: "Raleway", sans-serif;
+}
+.bouton:hover{
+    background-color: grey;
+}
+.bouton{
+    background-color: #4682B4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 30px;
+    margin-top : 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: "Raleway";
+    cursor: pointer;
+}
+.menu
+{
+background-color: #00547E;
+border-bottom: 4px solid #04A3ED;
+width:100%;
+height: auto;
+padding: 0 0px;
+margin: 0px;
+z-index: 1;
+opacity: 0.9;
+float: top;
+}
+.menu  .navbar-nav > .active > a
+{
+background-color : #04A3ED;
+color: white;
+font-weight: bold;
+}
+.menu  .navbar-nav >  li >  a
+{
+font-size: 13px;
+color: white;
+padding: 10px 70px;
+}
+.menu  .navbar-nav >  li >  a:hover
+{
+background-color: #04A3ED;
+}

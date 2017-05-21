@@ -1,0 +1,55 @@
+<!-- Page html d'accueil -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Page d'accueil MicMac</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="MainPage.css">
+  </head>
+  <body>
+    <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+    <div class="w3-display-topleft w3-padding-large w3-xlarge">
+      mm4d
+    </div>
+    <div class="w3-display-middle">
+      <h1 class="w3-jumbo w3-animate-top">Bienvenue sur MicMac</h1><br>
+      <h1 class="w3-jumbo w3-animate-top w3-center">En ligne</h1>
+      <hr class="w3-border-grey" style="margin:auto;width:40%">
+      <p class="w3-center"><input class="button" type="button" value="S'inscrire/Se connecter" onclick="openNav()"></input></p>
+    </div>
+    <div class="w3-display-bottomleft w3-padding-large">
+      Site réalisé par : Harrach . Fennia . Mathelier
+    </div>
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="overlay-content">
+        <div id="SignIn" style="float:left">
+          <h2 id="Sign2">Se connecter</h2>
+          <form method="post" action="SignIn.php" class="form1">
+            <label>Adresse mail: </label><input type="text" name="email" id="email"/><br/>
+            <label>Mot de passe: </label><input type="password" name="pass" id="pass"/><br/>
+            <div id="erreur"></div>
+            <input class="button" type="submit" value="Ok"/>
+          </form>
+        </div>
+        <div id="SignUp" style="float:right">
+          <h2 id="Sign1">S'inscrire</h2>
+          <form method="post" action="SignUp.php" class="form2">
+            <label>Adresse mail: </label><input type="email" name="email"/><br/>
+            <label>Pseudo: </label><input type="text" name="pseudo"/><br/>
+            <label>Mot de passe: </label><input type="password" name="passe"/><br/>
+            <label>Confirmer mot de passe: </label><input type="password" name="passe2"/><br/>
+            <div id="error"></div>
+            <input class="button" type="submit" value="Ok"/>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="MainPage.js"></script>
+    <script type="text/javascript" src="SignUp.js"></script>
+    <script type="text/javascript" src="SignIn.js"></script>
+  </body>
+</html>
